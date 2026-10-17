@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* Tokens de la marca. Se definen en la dirección de arte (paso 3),
+   nunca se dejan los valores por defecto. */
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-tinta: oklch(0.2 0.02 260);
+  --color-papel: oklch(0.98 0.005 90);
+  --color-acento: oklch(0.62 0.17 35);
+  --color-suave: oklch(0.55 0.02 260);
+
+  --ease-salida: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html { color-scheme: light; -webkit-font-smoothing: antialiased; }
+  body { background: var(--color-papel); color: var(--color-tinta); font-family: var(--font-sans); }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--color-acento); outline-offset: 3px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
